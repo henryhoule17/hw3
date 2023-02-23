@@ -58,6 +58,7 @@ void dealloc(Node* head)
     Node* temp;
     while(head) {
         temp = head->next;
+        cout << head->val;
         delete head;
         head = temp;
     }
@@ -100,17 +101,21 @@ int main(int argc, char* argv[])
     Node* larger;
     Comp comp;
 
-    llpivot(head, smaller, larger, 8);
+   /* llpivot(head, smaller, larger, 8);
     cout << "Larger: ";
     print(larger);
     cout << "Smaller: ";
-    print(smaller);
+    print(smaller);*/
 
 
-    larger = llfilter(larger, comp);
+    larger = llfilter(head, comp);
     print(larger);
-    smaller = llfilter(smaller, comp);
-    print(smaller);
+   // smaller = llfilter(smaller, comp);
+    //print(smaller);
+
+    //dealloc(smaller);
+    dealloc(larger);
+	//dealloc(head);
 
     return 0;
 
