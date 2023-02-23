@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <functional>
-#include "llrec.h"
+//#include "llrec.h"
+#include "llrec.cpp"
 using namespace std;
 
 /**
@@ -67,7 +68,15 @@ void dealloc(Node* head)
 //   function object struct declarations
 // -----------------------------------------------
 
-
+struct Comp{
+    bool operator()(int val)
+    {
+    if(val%2 == 0)
+        return false;
+    else
+        return true;
+    }
+};
 
 
 
@@ -87,9 +96,22 @@ int main(int argc, char* argv[])
 
     // Test out your linked list code
 
+    Node* smaller;
+    Node* larger;
+    Comp comp;
+
+    llpivot(head, smaller, larger, 8);
+    cout << "Larger: ";
+    print(larger);
+    cout << "Smaller: ";
+    print(smaller);
 
 
-    
+    larger = llfilter(larger, comp);
+    print(larger);
+    smaller = llfilter(smaller, comp);
+    print(smaller);
+
     return 0;
 
 }
